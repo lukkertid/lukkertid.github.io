@@ -35,13 +35,13 @@
           <td    id="sec">1.00s</td>
         </tr>
         <tr>
-          <td   id="milli"> 1.00e+4ms</td>
+          <td   id="milli"> 1.00e+3ms</td>
         </tr>
         <tr>
-          <td  id="micro">1.00e+7µs</td>
+          <td  id="micro">1.00e+6µs</td>
         </tr>
         <tr>
-          <td  id="nano">1.00e+10ns</td>
+          <td  id="nano">1.00e+9ns</td>
  
         </tr>
 		<tr>
@@ -83,9 +83,9 @@
 		
 		var time = numF / numP;  //s
 		  document.getElementById("sec").innerHTML = time.toPrecision(numPr) + "s";
-		  document.getElementById("milli").innerHTML = (time*(10e3)).toPrecision(numPr) + "ms";
-		  document.getElementById("micro").innerHTML = (time*(10e6)).toPrecision(numPr) + "µs";
-		  document.getElementById("nano").innerHTML = (time*(10e9)).toPrecision(numPr) + "ns";
+		  document.getElementById("milli").innerHTML = (time*(1e3)).toPrecision(numPr) + "ms";
+		  document.getElementById("micro").innerHTML = (time*(1e6)).toPrecision(numPr) + "µs";
+		  document.getElementById("nano").innerHTML = (time*(1e9)).toPrecision(numPr) + "ns";
 
 		  
 		}
@@ -124,4 +124,9 @@
 		}
 	</script>
   </body>
+  
+  
+  
+  
+
 </html>
