@@ -85,48 +85,8 @@
 		  document.getElementById("sec").innerHTML = time.toPrecision(numPr) + "s";
 		  document.getElementById("milli").innerHTML = (time*(1e3)).toPrecision(numPr) + "ms";
 		  document.getElementById("micro").innerHTML = (time*(1e6)).toPrecision(numPr) + "µs";
-		  document.getElementById("nano").innerHTML = (time*(1e9)).toPrecision(numPr) + "ns";
-
-		  
+		  document.getElementById("nano").innerHTML = (time*(1e9)).toPrecision(numPr) + "ns";		  
 		}
 		</script>
-		<script>
-		function nonScientific(number) {
-			number = number +"";
-			console.log("Number raw: " + number);
-			var index = number.indexOf("e+");
-			var j;
-			if(index >= 0) 
-			{
-				var exponent = number.slice(index+2); //pos "e+" === exponent
-				console.log("exponent " + exponent);
-				//j = number.indexOf(".");	//Always str[1]
-				number = number.replace(".","");
-				console.log("Number no . : " + number);
-				var dec = number.slice(0,2);
-				console.log("Number sliced: " + dec);
-				var x;
-				for (x = 0; x < exponent - 1; x++) {
-					dec = dec + "0";
-				}
-				console.log(dec);
-				return;
-			}
-			
-			index = number.indexOf("e-");
-			if(index >= 0) 
-			{
-				console.log("e- number");
-				return;
-			}
-			
-			console.log("not e* number");
-		}
-	</script>
   </body>
-  
-  
-  
-  
-
 </html>
