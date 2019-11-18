@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </head>
+   <body>
+    <table align="center" style="text-align: center;">
+        <tr>
+          <td  style="font-weight: bold;" >Frames per second</td>
+        </tr>
+        <tr>
+          <td><input style="text-align: right;" type="number" id="fps" value=1 tabindex=1></td>
+        </tr>
+        <tr>
+          <td  style="font-weight: bold;" >Antall bilder</td>
+        </tr>
+		<tr>
+          <td   ><input style="text-align: right;" type="number" id="frames" value=1 tabindex=2></td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;"  >Presisjon</td>      
+        </tr>
+		<tr>
+          <td    ><input style="text-align: right;" type="number" id="prec" value=3 tabindex=3></td> 
+        </tr>
+		 <tr>
+		 
+          <td  > <br> </td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;" >Tid</td>
+        </tr>
+        <tr>
+          <td    id="sec">1.00s</td>
+        </tr>
+        <tr>
+          <td   id="milli"> 1.00e+4ms</td>
+        </tr>
+        <tr>
+          <td  id="micro">1.00e+7µs</td>
+        </tr>
+        <tr>
+          <td  id="nano">1.00e+10ns</td>
+ 
+        </tr>
+		<tr>
+          
+        </tr>
+        <tr>
+           
+        </tr>
+    </table>
+	
+	<script>
+		document.getElementById("fps").addEventListener("change", calc);
+		document.getElementById("frames").addEventListener("change", calc);
+		document.getElementById("prec").addEventListener("change", calc);
+		
+		function calc() {
+		var numF = document.getElementById("frames").value;
+		var numP = document.getElementById("fps").value;
+		var numPr = document.getElementById("prec").value;
+
+		
+		if(numF == null || numF < 1) {
+			numF = 1;
+			document.getElementById("frames").value = numF;
+		} 
+		
+		if(numP == null || numP < 1) {
+			numP = 1;
+			document.getElementById("fps").value = numP;
+		} 
+		
+		if(numPr == null || numPr < 1) {
+			numPr = 1;
+			document.getElementById("prec").value = numPr;
+		} else if (numPr > 10) {
+			numPr = 10;
+			document.getElementById("prec").value = numPr;
+		}
+		
+		var time = numF / numP;  //s
+		  document.getElementById("sec").innerHTML = time.toPrecision(numPr) + "s";
+		  document.getElementById("milli").innerHTML = (time*(10e3)).toPrecision(numPr) + "ms";
+		  document.getElementById("micro").innerHTML = (time*(10e6)).toPrecision(numPr) + "µs";
+		  document.getElementById("nano").innerHTML = (time*(10e9)).toPrecision(numPr) + "ns";
+
+		  
+		}
+		</script>
+		<script>
+		function nonScientific(number) {
+			number = number +"";
+			console.log("Number raw: " + number);
+			var index = number.indexOf("e+");
+			var j;
+			if(index >= 0) 
+			{
+				var exponent = number.slice(index+2); //pos "e+" === exponent
+				console.log("exponent " + exponent);
+				//j = number.indexOf(".");	//Always str[1]
+				number = number.replace(".","");
+				console.log("Number no . : " + number);
+				var dec = number.slice(0,2);
+				console.log("Number sliced: " + dec);
+				var x;
+				for (x = 0; x < exponent - 1; x++) {
+					dec = dec + "0";
+				}
+				console.log(dec);
+				return;
+			}
+			
+			index = number.indexOf("e-");
+			if(index >= 0) 
+			{
+				console.log("e- number");
+				return;
+			}
+			
+			console.log("not e* number");
+		}
+	</script>
+  </body>
+</html>
